@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ism, Sana va Yosh</title>
+    <style>
+        body { 
+            font-family: Arial, sans-serif; 
+            margin: 40px; 
+            line-height: 1.6;
+        }
+        .success { 
+            color: green; 
+            background: #e8f5e9; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 2px solid green;
+            max-width: 500px;
+        }
+        .error { 
+            color: red; 
+            background: #ffebee; 
+            padding: 20px; 
+            border-radius: 8px; 
+            border: 2px solid red;
+            max-width: 500px;
+        }
+        input {
+            width: 100%;
+            max-width: 400px;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 16px;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h2>Ism, Sana va Yosh</h2>
+
+    {% if res is not none %}
+        {% if res|length == 1 and res[0] == "Ma'lumotlar noto'g'ri kiritildi" %}
+            <div class="error">
+                ❌ {{ res[0] }}
+            </div>
+        {% else %}
+            <div class="success">
+                <h3>✅ Muvaffaqiyatli yuborildi!</h3>
+                <p><strong>Ism:</strong> {{ res[0] }}</p>
+                <p><strong>Tug‘ilgan sana:</strong> {{ res[1] }}</p>
+                <p><strong>Yosh:</strong> {{ res[2] }}</p>
+            </div>
+        {% endif %}
+        <hr>
+    {% endif %}
+
+    <form method="POST">
+        <input type="text" name="name" placeholder="Ism" required><br><br>
+        <input type="date" name="date" required><br><br>
+        <input type="number" name="age" placeholder="Yoshingiz" required><br><br>
+        <button type="submit">Yuborish</button>
+    </form>
+
+    <br>
+    <p>
+        <a href="/">Bosh sahifa</a> | 
+        <a href="/result1">1. Ism + Email</a> | 
+        <a href="/result2">2. Ism + 2 son</a> | 
+        <a href="/result3">3. Ism + Telefon</a> | 
+        <a href="/result4">4. Ism + Sana</a> | 
+        <a href="/result5">5. Email + Yosh</a> | 
+        <a href="/result6">6. Ism + Telefon + Yosh</a> | 
+        <a href="/result7">7. Sana + Email</a> | 
+        <a href="/result8">8. Ism + 3 ta son</a> | 
+        <a href="/result9">9. Telefon + Sana</a> | 
+        <a href="/result10">10. Ism + Email + Yosh</a> | 
+        <a href="/result11">11. 2 ta Sana</a> | 
+        <a href="/result12">12. Email + Telefon</a>
+    </p>
+</body>
+</html>
